@@ -4,7 +4,7 @@
 --------
 Prepared by:
 
-* `<author1>`,`<organization>`
+* `Adam Caudle`,`WSU team Tylenol >`
 * `<author1>`,`<organization>`
 * `<author1>`,`<organization>`
 * `<author1>`,`<organization>`
