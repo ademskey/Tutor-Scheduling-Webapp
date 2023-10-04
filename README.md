@@ -1,8 +1,9 @@
 # CptS 322 Term Project
-### Project Title: 
-### Team Name :  <enter your team name here> 
+### Project Title: Tutoring App 
+### Team Name :  Team Tylenol
 ### Team Members 
-* member 1
-* member 2
-* member 3
-* member 4
+* Trenton Bergdahl
+* Cameron Caen
+* Jack Balster
+* Matthew Pham
+* Adam Caudle
