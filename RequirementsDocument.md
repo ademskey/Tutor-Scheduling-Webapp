@@ -48,15 +48,15 @@ Prepared by:
 ----
 # 1. Introduction
 
-This section should provide an overview of the entire document
+This project titled “VCEA Tutoring Portal” is meant to provide a useful web-portal for students utilizing the VCEA tutoring services to schedule appointments with tutors. It will help streamline student to tutor appointments and reduce wasted time spent for both students and tutors in the VCEA tutoring center.
 
 ## 1.1 Document Purpose
 
-Describe the purpose of the Software Requirement Specification (SRS) document and its intended audience.
+The purpose of this document is to outline the requirements necessary for completion of all deliverables associated with the project. In short it outlines the idea, design, and scope needed and used to complete the VCEA Tutoring Portal.
 
 ## 1.2 Product Scope
 
-Identify the product whose software requirements are specified in this document. Explain what the product that is covered by this SRS will do. Provide a short description of the software being specified and its purpose, including relevant benefits, objectives, and goals.
+The VCEA Tutoring portal is the product deliverable which has the software requirements outlined in this document. This product will be a web-app which streamlines appointments set up with the VCEA tutoring center. Students, Tutors, and Teachers will be able to set up appointments with each other through the web app without having to physically travel to the VCEA. The benefits in this is that students, teachers, and tutors waste less time in their daily lives and spend more of it being productive. The objective of this is to make the software easy to use, and efficient. The ultimate goal being implementation of a useful software into the VCEA to improve efficiency of the tutoring center.
 
 ## 1.3 Document Overview
 
