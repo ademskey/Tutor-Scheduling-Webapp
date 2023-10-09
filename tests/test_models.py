@@ -2,7 +2,7 @@ import pytest
 import unittest
 import warnings
 warnings.filterwarnings("ignore")
-from config import Config
+
 
 
 class TestConfig(Config):
