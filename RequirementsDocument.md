@@ -4,10 +4,12 @@
 --------
 Prepared by:
 
-* `Adam Caudle`,`WSU team Tylenol >`
-* `<author1>`,`<organization>`
-* `<author1>`,`<organization>`
-* `<author1>`,`<organization>`
+* `Adam Caudle`,`WSU team Tylenol`
+* `Trenton Bergdahl`,`WSU Team Tylenol`
+* `Cameron Caen`,`WSU Team Tylenol`
+* `Matthew Pham`,`WSU Team Tylenol`
+*  Jack Balster, ‘WSU Team Tylenol’
+
 
 ---
 
@@ -85,6 +87,20 @@ Super-Admin
 Admin
 Tutor
 Student (Tutee)
+
+User Stories: 
+
+User: I need a online tutoring software that allows students to set up appointments with tutors managed well by the VCEA administration.
+
+User: I need to be able to access the tutoring portal online and have it work as expected.
+
+User: I (as a tutor) need administrators to be able to add more tutors and see what appointments I have.
+
+User: I need the appointments saved and accessible whenever I have an internet connection.
+
+User: I want to be able to see a profile on my prospective tutor
+
+Use Cases:
 
 | Use case # 1      |   |
 | ------------------ |--|
@@ -214,7 +230,7 @@ Student (Tutee)
 | Actions           | Admin user navigates to schedule tutor tab  |
 | Alternative paths | None  |
 | Postconditions    | The tutor is scheduled at specific times and the admin returns to the dashboard. |
-| Acceptance tests  | Tutor is successfully associated with a timeslot? |
+| Acceptance tests  | Tutor is successfully associated with a timeslot |
 | Iteration         | Iteration 2 |
 
 | Use case # 11     |   |
@@ -325,20 +341,8 @@ Student (Tutee)
 | Acceptance tests  | Editable tutor profile successfully loads and is displayed |
 | Iteration         | Iteration 1 |
 
-| Use case # 19     |   |
-| ------------------ |--|
-| Name              | Edit Tutor Profile  |
-| Users             | Tutor |
-| Rationale         | Tutors may want to update their information/profile as needed.   |
-| Triggers          | Click on edit profile button  |
-| Preconditions     | Tutor user is logged in  |
-| Actions           | Tutor user navigates to edit profile page  |
-| Alternative paths | None  |
-| Postconditions    | The editable profile for the tutor is displayed. |
-| Acceptance tests  | Editable tutor profile successfully loads and is displayed |
-| Iteration         | Iteration 1 |
 
-| Use case # 20     |   |
+| Use case # 19     |   |
 | ------------------ |--|
 | Name              | Select class |
 | Users             | Student |
