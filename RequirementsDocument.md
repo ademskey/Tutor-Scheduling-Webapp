@@ -370,9 +370,9 @@ Use Cases:
 ----
 # 3. User Interface
 
-![HomePage](https://github.com/[cameroncaen]/[termproject-teamtylenol]/blob/[main]/HomepageMockup.jpg?raw=true)
-![SchedulePage](https://github.com/[cameroncaen]/[termproject-teamtylenol]/blob/[main]/ScheduleMockup.jpg?raw=true)
-![ProfilePage](https://github.com/[cameroncaen]/[termproject-teamtylenol]/blob/[main]/ProfileMockup.jpg?raw=true)
+![HomePage](Mockups/HomepageMockup.png?raw=true)
+![SchedulePage](Mockups/ScheduleMockup.png?raw=true)
+![ProfilePage](Mockups/ProfileMockup.png?raw=true)
 
 ----
 # 4. Product Backlog
