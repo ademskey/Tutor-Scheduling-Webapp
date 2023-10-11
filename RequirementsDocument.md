@@ -8,7 +8,7 @@ Prepared by:
 * `Trenton Bergdahl`,`WSU Team Tylenol`
 * `Cameron Caen`,`WSU Team Tylenol`
 * `Matthew Pham`,`WSU Team Tylenol`
-*  Jack Balster, ‘WSU Team Tylenol’
+* `Jack Balster`, `WSU Team Tylenol`
 
 
 ---
@@ -370,10 +370,9 @@ Use Cases:
 ----
 # 3. User Interface
 
-![HomePage](Homepage Mockup.png)
-![SchedulePage](Schedule Mockup.png)
-![ProfilePage](Profile Mockup.png)
-
+![HomePage](https://github.com/[cameroncaen]/[termproject-teamtylenol]/blob/[main]/HomepageMockup.jpg?raw=true)
+![SchedulePage](https://github.com/[cameroncaen]/[termproject-teamtylenol]/blob/[main]/ScheduleMockup.jpg?raw=true)
+![ProfilePage](https://github.com/[cameroncaen]/[termproject-teamtylenol]/blob/[main]/ProfileMockup.jpg?raw=true)
 
 ----
 # 4. Product Backlog
