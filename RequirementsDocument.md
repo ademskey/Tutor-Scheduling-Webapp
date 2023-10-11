@@ -355,54 +355,34 @@ Student (Tutee)
 ----
 ## 2.3 Non-Functional Requirements
 
-List the non-functional requirements in this section.
+1. Usability: The user interface should be easy to use and understand.
 
-You may use the following template for non-functional requirements.
+2. Scalable: There should be enough database storage to accommodate users.
 
-1. [Enter a Concise Requirement Name]:  [provide a concise description, in clear and easily understandable language to specify the requirement]
+3. Transferable: There should be an easy transfer from database to database.
+
+4. Performance: It should perform all tasks within 5 seconds.
 
 ----
 # 3. User Interface
 
-Here you should include the sketches or mockups for the main parts of the interface.
+![HomePage](Homepage Mockup.png)
+![SchedulePage](Schedule Mockup.png)
+![ProfilePage](Profile Mockup.png)
+
 
 ----
 # 4. Product Backlog
 
 Here you should include a link to your GitHub repo issues page, i.e., your product backlog. Make sure to create an issue for each use case. You should also create issues for the initial development tasks that you plan to work on during iteration1. 
 
+https://github.com/WSU-CptS-322-Fall-2023/termproject-teamtylenol/issues
+
 ----
 # 4. References
 
-Cite your references here.
-
-For the papers you cite give the authors, the title of the article, the journal name, journal volume number, date of publication and inclusive page numbers. Giving only the URL for the journal is not appropriate.
-
-For the websites, give the title, author (if applicable) and the website URL.
+  Homepage. Voiland College of Engineering and Architecture. (2023, October 9). https://vcea.wsu.edu/  
+  (used for UI reference to maintain continuity).
 
 ----
-----
-# Appendix: Grading Rubric
-(Please remove this part in your final submission)
-
-These is the grading rubric that we will use to evaluate your document. 
-
-| Max Points  | **Content** |
-| ----------- | ------- |
-| 10          | Do the requirements clearly state the customers’ needs? |
-| 5           | Do the requirements avoid specifying a design (note: customer-specified design elements are allowed; non-functional requirements may specify some major design requirements)? |
-| | |  
-|    | **Completeness** |
-| 25 | Are use cases written in sufficient detail to allow for design and planning? |
-| 4 | Do use cases have acceptance tests? | 
-| 25 | Is your use case model complete? Are all major use cases included in the document? |
-| 10 |  Are the User Interface Requirements given with some detail? Are there some sketches, mockups?  |
-| | |  
-|   | **Clarity** |
-| 5 | Is the document carefully written, without typos and grammatical errors? |
-| 4 | Is each part of the document in agreement with all other parts? |
-|   | Are all items clear and not ambiguous? (Minor document readability issues should be handled off-line, not in the review, e.g. spelling, grammar, and organization). |
-|   |   |
-|    | **GitHub Issues** |
-| 12 | Has the team setup their GitHub Issues page? Have they  generated the list of user stories, use-cases, created milestones, assigned use-cases (issues) to milestones?   Example GitHub repo (check the issues): https://github.com/WSU-CptS322-Fall2022/TermProjectSampleRepo/issues  |
 
