@@ -230,7 +230,7 @@ Use Cases:
 | Actions           | Admin user navigates to schedule tutor tab  |
 | Alternative paths | None  |
 | Postconditions    | The tutor is scheduled at specific times and the admin returns to the dashboard. |
-| Acceptance tests  | Tutor is successfully associated with a timeslot |
+| Acceptance tests  | Tutor is successfully associated with a timeslot? |
 | Iteration         | Iteration 2 |
 
 | Use case # 11     |   |
@@ -314,35 +314,8 @@ Use Cases:
 | Iteration         | Iteration 2 |
 
 
-| Use case # 17     |   |
-| ------------------ |--|
-| Name              | Create Admin Account |
-| Users             | Super Admin |
-| Rationale         | Tutors may want to update their information/profile as needed.   |
-| Triggers          | Click on edit profile button  |
-| Preconditions     | Tutor user is logged in  |
-| Actions           | Tutor user navigates to edit profile page  |
-| Alternative paths | None  |
-| Postconditions    | The editable profile for the tutor is displayed. |
-| Acceptance tests  | Editable tutor profile successfully loads and is displayed |
-| Iteration         | Iteration 1 |
 
-
-| Use case # 18     |   |
-| ------------------ |--|
-| Name              | Edit Tutor Profile  |
-| Users             | Tutor |
-| Rationale         | Tutors may want to update their information/profile as needed.   |
-| Triggers          | Click on edit profile button  |
-| Preconditions     | Tutor user is logged in  |
-| Actions           | Tutor user navigates to edit profile page  |
-| Alternative paths | None  |
-| Postconditions    | The editable profile for the tutor is displayed. |
-| Acceptance tests  | Editable tutor profile successfully loads and is displayed |
-| Iteration         | Iteration 1 |
-
-
-| Use case # 19     |   |
+| Use case # 17  |   |
 | ------------------ |--|
 | Name              | Select class |
 | Users             | Student |
@@ -354,6 +327,7 @@ Use Cases:
 | Postconditions    | Class options are displayed |
 | Acceptance tests  | Student can select a class and see tutors for that class|
 | Iteration         | Iteration 1 |
+
 
 
 ----
