@@ -1,43 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+    <!-- base.html -->
+{% load static %}
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-        }
-
-        #sidebar {
-            width: 200px;
-            background-color: #333;
-            padding-top: 20px;
-            color: #fff;
-            position: fixed;
-            height: 100%;
-            overflow: auto;
-        }
-
-        #content {
-            margin-left: 200px;
-            padding: 20px;
-        }
-
-        a {
-            color: #fff;
-            text-decoration: none;
-            padding: 10px;
-            display: block;
-        }
-
-        a:hover {
-            background-color: #555;
-        }
-    </style>
+    <!-- Other head elements -->
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
 </head>
+
 <body>
 
     <div id="sidebar">
