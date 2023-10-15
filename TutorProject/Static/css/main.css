@@ -30,3 +30,50 @@ a {
 a:hover {
     background-color: #555;
 }
+
+/* Style the sidebar */
+.wsu-navigation-site-vertical {
+    width: 200px;
+    background-color: #333;
+    color: #fff;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Style the buttons */
+.wsu-navigation-site-vertical__toggle-button,
+.wsu-navigation-site-vertical__open-button,
+.wsu-navigation-site-vertical__close {
+    background-color: #555;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+
+/* Style the links */
+.wsu-navigation-item a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px;
+    display: block;
+}
+
+.wsu-navigation-item a:hover {
+    background-color: #777;
+}
+
+/* Style the submenu */
+.sub-menu {
+    display: none;
+    padding-left: 20px;
+}
+
+/* Show submenu on hover */
+.wsu-navigation-item:hover .sub-menu {
+    display: block;
+}

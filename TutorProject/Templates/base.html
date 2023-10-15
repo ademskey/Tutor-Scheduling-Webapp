@@ -1,13 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-    <!-- base.html -->
-{% load static %}
-
 <head>
-    <!-- Other head elements -->
+    {% load static %}
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
 </head>
-
 <body>
 
     <div id="sidebar">
@@ -18,9 +14,8 @@
     </div>
 
     <div id="content">
-        <!-- Your page content goes here -->
-        <h1>Rate your tutor</h1>
-        <p>Please select which department you're in</p>
+        <!-- This is the block where content from child templates will be inserted -->
+        {% block content %}{% endblock %}
     </div>
 
 </body>
