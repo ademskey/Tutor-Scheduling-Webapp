@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.contrib.auth.models import AbstractUser
 # Create your models here.
 class Class(models.Model):
     id = models.IntegerField(primary_key=True)
@@ -9,3 +9,26 @@ class Class(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class CustomUser(AbstractUser):
+    is_admin = models.BooleanField(default=False)
+    is_student = models.BooleanField(default=False)
+    is_tutor = models.BooleanField(default=False)
+
+class Admin(models.Model):
+    #user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
+    pass
+
+class Tutor(models.Model):
+    pass
+   # user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
+   # tutored_classes = models.ManyToManyField('Class', related_name='tutors')
+    #minutes_tutored = models.PositiveIntegerField()
+    #chedule = models.CharField(max_length=100)
+    
+
+class Student(models.Model):
+   # user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
+    #appointments = models.ManyToManyField('Appointment', related_name='students')
+    pass
