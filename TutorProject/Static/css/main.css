@@ -1,8 +1,13 @@
+:root {
+    --headerColor: #333333;
+}
+
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%; 
+    background-color: var(--headerColor);
 }
 
 .logo, .header-nav {
@@ -12,20 +17,34 @@ header {
 
 
 .header-nav {
-    display: flex;
-    gap: 20px; 
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding-top: 30px;
+    padding-right: 15px;
+    background-color: var(--headerColor);
 }
 
 .header-nav a {
     margin-left: 20px; 
     text-decoration: none;
-    color: #20bf6b;
+    color: white;
+    
 }
 
 .header-nav a:hover {
     text-decoration: underline;
 }
+.header-nav a:last-child {
+    margin-right: 0;  /* Ensure the last link doesn't have extra margin on the right */
+}
 
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    background-color: #808080;
+}
 
   article {
      grid-area: content;
@@ -48,6 +67,7 @@ header {
     position: relative; 
   }
   .wrapper {
+    position: relative;
     display: grid;
     grid-gap: 0px; 
     grid-template-columns: 250px 3fr;
@@ -145,6 +165,7 @@ html, body {
     padding: 0;
     height: 100%; /* This ensures that the body takes up the full height of the viewport */
     width: 100%; /* This ensures that the body takes up the full width of the viewport */
+    background-color: var(--headerColor); /*header to be the same color*/
 }
 
 .logo {
