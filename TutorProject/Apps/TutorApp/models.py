@@ -18,9 +18,9 @@ class CustomUser(AbstractUser):
 
 class Admin(models.Model):
     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
-   
 
 class Tutor(models.Model):
+    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
     
     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
     tutored_classes = models.ManyToManyField('Class', related_name='tutors')
@@ -30,5 +30,3 @@ class Tutor(models.Model):
 
 class Student(models.Model):
     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
-
-    

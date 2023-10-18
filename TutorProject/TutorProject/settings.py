@@ -26,7 +26,8 @@ SECRET_KEY = 'django-insecure-pynk1=lw%13-ekz_#l(o8pjhyxme=3l0&3tf#hs(bbjlf1jj4v
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
+LOGIN_REDIRECT_URL = '/'
+LOGIN_URL = 'custom_login'
 ALLOWED_HOSTS = []
 
 
