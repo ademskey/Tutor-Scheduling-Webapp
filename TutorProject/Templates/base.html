@@ -25,7 +25,15 @@
           
         </article> 
         <aside id="sidebar">
-            <button id="closeSidebarBtn">Close</button>
+            <button id="closeSidebarBtn">
+               
+                <img src="{% static 'img/closeButton.svg' %}" alt="Close Sidebar" width="20" height="20">
+            </button>
+             <!-- Menu button (Initially hidden) -->
+            <button id="openSidebarBtn" style="display: none;">
+                <img src="{% static 'img/menu.svg' %}" alt="Open Sidebar" width="20" height="20">
+            </button>
+            
             <div class="sidebar-content">
                 
             <ul>
@@ -44,6 +52,7 @@
         <!-- This is the block where content from child templates will be inserted -->
         {% block content %}{% endblock %}
     </div>
-    <script src="{% static 'css/script.js' %}"></script>
+    <script src="{% static 'css/script.js' %}" defer></script>
+
 </body>
 </html>

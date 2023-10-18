@@ -1,5 +1,6 @@
 :root {
-    --headerColor: #333333;
+    --headerColor: #4D4D4D;
+    --crimson: #A60F2D;
 }
 
 header {
@@ -48,7 +49,7 @@ header {
 
   article {
      grid-area: content;
-    background-color: #20bf6b;
+    background-color: white;
     padding: 20px;
     z-index: 10;  /* Some value lower than the sidebar's z-index */
     position: relative;  /* Same as header and footer */
@@ -62,7 +63,7 @@ header {
   footer {
     padding: 20px;
     grid-area: footer;
-    background-color: #fd9644;
+    background-color: var(--headerColor);
     z-index: 10;  /* Some value lower than the sidebar's z-index */
     position: relative; 
   }
@@ -105,13 +106,13 @@ aside a {
     text-decoration: none;  /* Remove underline */
     padding: 10px 15px;  /* Padding around each link */
     display: block;  /* Make each link take the full width of the li */
-    background-color: #2d98da;  /* Background color for the links */
+    background-color: black;  /* Background color for the links */
     border-radius: 5px;  /* Rounded corners for the links */
     transition: background-color 0.3s;  /* Smooth transition for hover effect */
 }
 
 aside a:hover {
-    background-color: #3498db;  /* Change background color on hover */
+    background-color: black;  /* Change background color on hover */
 }
 
 /* Styling the sidebar */
@@ -120,7 +121,7 @@ aside a:hover {
     left: 0;
     height: 100%;
     width: 250px;
-    background-color: #45aaf2;
+    background-color: black;
     overflow-x: hidden;
     transition: 0.5s;
     z-index: 1000;  
@@ -135,16 +136,16 @@ aside a:hover {
     position: absolute;  /* Positioning inside the sidebar */
     top: 20px;  /* Margin from the top */
     right: 20px;  /* Margin from the right */
-    background-color: #fd9644;  /* Button color */
     border: none;  /* Remove border */
     padding: 10px 20px;  /* Padding around the text */
-    color: #ffffff;  /* Text color */
+    background-color: transparent;
     font-size: 16px;  /* Font size */
     cursor: pointer;  /* Change cursor to pointer on hover */
     border-radius: 5px;  /* Rounded corners */
+    display: block;
 }
 #sidebar.closed #closeSidebarBtn {
-    background-color: #45aaf2; /* or any other color to indicate a different state */
+    display: none; /* or any other color to indicate a different state */
 }
 
 .wrapper.collapsed {
@@ -156,9 +157,27 @@ aside a:hover {
     display: none;
 }
 
-#closeSidebarBtn:hover {
-    background-color: #fc7c5f;  /* Change color on hover */
-} 
+#sidebar.closed #openSidebarBtn{
+    display: block;
+}
+
+/* Positioning the menu button */
+#openSidebarBtn {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    padding: 10px;
+
+}
+
+#openSidebarBtn img {
+    width: 20px;
+    height: 20px;
+}
+
 
 html, body {
     margin: 0;
