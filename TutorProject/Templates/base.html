@@ -22,6 +22,7 @@
         </header>
         <article>
           <h1>Welcome To VCEA Tutor</h1>
+          {% block content %}{% endblock %}
           
         </article> 
         <aside id="sidebar">
@@ -50,7 +51,7 @@
 
     <div id="content">
         <!-- This is the block where content from child templates will be inserted -->
-        {% block content %}{% endblock %}
+        
     </div>
     <script src="{% static 'css/script.js' %}" defer></script>
 

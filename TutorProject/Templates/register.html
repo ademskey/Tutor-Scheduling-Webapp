@@ -1,10 +1,28 @@
-<h3>register</h3>
+{% extends 'base.html' %}
 
+{% block content %}
+    <h1>Register</h1>
+    <form method="post">
+        {% csrf_token %}
 
-<form method = "POST" action = "">
-    {% csrf_token %}
-    {{form.as_p}}
+        <div>
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <br>
+        
+        <div>
+            <label for="password1">Password:</label><br>
+            <input type="password" id="password1" name="password1" required>
+        </div>
+        <br>
 
-
-    <input type = "submit" name = "Create User">
-</form>
+        <div>
+            <label for="password2">Confirm Password:</label><br>
+            <input type="password" id="password2" name="password2" required>
+        </div>
+        <br>
+        
+        <button type="submit">Register</button>
+    </form>
+{% endblock %}
