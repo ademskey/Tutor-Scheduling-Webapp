@@ -1,79 +1,163 @@
-body {
-    font-family: Arial, sans-serif;
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%; 
+}
+
+.logo, .header-nav {
+    
+    padding: 10px; 
+}
+
+
+.header-nav {
+    display: flex;
+    gap: 20px; 
+}
+
+.header-nav a {
+    margin-left: 20px; 
+    text-decoration: none;
+    color: #20bf6b;
+}
+
+.header-nav a:hover {
+    text-decoration: underline;
+}
+
+
+  article {
+     grid-area: content;
+    background-color: #20bf6b;
+    padding: 20px;
+    z-index: 10;  /* Some value lower than the sidebar's z-index */
+    position: relative;  /* Same as header and footer */
+ 
+  }
+  aside {
+    grid-area: sidebar;
+    background-color: #45aaf2;
+    position: relative;  /* This is the key change */
+}
+  footer {
+    padding: 20px;
+    grid-area: footer;
+    background-color: #fd9644;
+    z-index: 10;  /* Some value lower than the sidebar's z-index */
+    position: relative; 
+  }
+  .wrapper {
+    display: grid;
+    grid-gap: 0px; 
+    grid-template-columns: 250px 3fr;
+    grid-template-areas: 
+      "header  header"
+      "sidebar content"
+      "footer  footer";
+    height: 100vh; /* 100% of the viewport height */
+    grid-template-rows: auto 1fr auto; 
+}
+
+  @media (max-width: 500px) {
+    .wrapper {
+      grid-template-columns: 4fr;
+      grid-template-areas:
+        "header"
+        "content"
+        "sidebar"
+        "footer";
+    }
+  }
+
+  /* Styling the sidebar links */
+aside ul {
+    list-style-type: none;  /* Remove bullet points */
+    padding: 0;
+}
+
+aside li {
+    margin: 10px 0;  /* Space between each link */
+}
+
+aside a {
+    color: #ffffff;  /* Text color for the links */
+    text-decoration: none;  /* Remove underline */
+    padding: 10px 15px;  /* Padding around each link */
+    display: block;  /* Make each link take the full width of the li */
+    background-color: #2d98da;  /* Background color for the links */
+    border-radius: 5px;  /* Rounded corners for the links */
+    transition: background-color 0.3s;  /* Smooth transition for hover effect */
+}
+
+aside a:hover {
+    background-color: #3498db;  /* Change background color on hover */
+}
+
+/* Styling the sidebar */
+#sidebar {
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 250px;
+    background-color: #45aaf2;
+    overflow-x: hidden;
+    transition: 0.5s;
+    z-index: 1000;  
+}
+
+.sidebar-content {
+    margin-top: 90px;  /* This value should be adjusted based on the height of the close button plus any desired spacing */
+}
+
+/* Styling the close button */
+#closeSidebarBtn {
+    position: absolute;  /* Positioning inside the sidebar */
+    top: 20px;  /* Margin from the top */
+    right: 20px;  /* Margin from the right */
+    background-color: #fd9644;  /* Button color */
+    border: none;  /* Remove border */
+    padding: 10px 20px;  /* Padding around the text */
+    color: #ffffff;  /* Text color */
+    font-size: 16px;  /* Font size */
+    cursor: pointer;  /* Change cursor to pointer on hover */
+    border-radius: 5px;  /* Rounded corners */
+}
+#sidebar.closed #closeSidebarBtn {
+    background-color: #45aaf2; /* or any other color to indicate a different state */
+}
+
+.wrapper.collapsed {
+    grid-template-columns: 50px 3fr;  /* Adjust the 50px value as per the desired width of the collapsed sidebar */
+}
+
+/* Hide the content when the sidebar is closed */
+#sidebar.closed .sidebar-content {
+    display: none;
+}
+
+#closeSidebarBtn:hover {
+    background-color: #fc7c5f;  /* Change color on hover */
+} 
+
+html, body {
     margin: 0;
     padding: 0;
-    display: flex;
+    height: 100%; /* This ensures that the body takes up the full height of the viewport */
+    width: 100%; /* This ensures that the body takes up the full width of the viewport */
 }
 
-#sidebar {
-    width: 200px;
-    background-color: #333;
-    padding-top: 20px;
-    color: #fff;
-    position: fixed;
-    height: 100%;
-    overflow: auto;
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0;       /* Remove margin */
+    padding: 0;      /* Remove padding */
 }
 
-#content {
-    margin-left: 200px;
-    padding: 20px;
-}
-
-a {
-    color: #fff;
-    text-decoration: none;
-    padding: 10px;
-    display: block;
-}
-
-a:hover {
-    background-color: #555;
-}
-
-/* Style the sidebar */
-.wsu-navigation-site-vertical {
-    width: 200px;
-    background-color: #333;
-    color: #fff;
-    position: fixed;
-    height: 100%;
-    overflow: auto;
-    display: flex;
-    flex-direction: column;
-}
-
-/* Style the buttons */
-.wsu-navigation-site-vertical__toggle-button,
-.wsu-navigation-site-vertical__open-button,
-.wsu-navigation-site-vertical__close {
-    background-color: #555;
-    color: #fff;
-    border: none;
-    padding: 10px;
-    margin-bottom: 5px;
-    cursor: pointer;
-}
-
-/* Style the links */
-.wsu-navigation-item a {
-    color: #fff;
-    text-decoration: none;
-    padding: 10px;
-    display: block;
-}
-
-.wsu-navigation-item a:hover {
-    background-color: #777;
-}
-
-/* Style the submenu */
-.sub-menu {
-    display: none;
-    padding-left: 20px;
-}
-
-/* Show submenu on hover */
-.wsu-navigation-item:hover .sub-menu {
-    display: block;
+.logo img {
+    height: 80px; 
+    width: auto; 
+    display: block;  /* Make the image a block-level element */
+    margin: 0;       /* Remove margin */
+    padding: 0;      /* Remove padding */
 }
