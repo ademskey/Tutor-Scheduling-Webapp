@@ -17,16 +17,13 @@ class CustomUser(AbstractUser):
     is_tutor = models.BooleanField(default=False)
 
 class Admin(models.Model):
-    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
+    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE, default=CustomUser.objects.get(username='admin_default'))
 
 class Tutor(models.Model):
-    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
+    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE, default=CustomUser.objects.get(username='admin_default'))
     
-    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
-    tutored_classes = models.ManyToManyField('Class', related_name='tutors')
-    minutes_tutored = models.PositiveIntegerField()
-    chedule = models.CharField(max_length=100)
+    
     
 
 class Student(models.Model):
-    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
+    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE, default=CustomUser.objects.get(username='admin_default'))
