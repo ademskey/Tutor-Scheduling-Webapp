@@ -121,10 +121,18 @@ aside a:hover {
     left: 0;
     height: 100%;
     width: 250px;
-    background-color: black;
+    background-color: rgb(78, 78, 78);
     overflow-x: hidden;
     transition: 0.5s;
     z-index: 1000;  
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+}
+
+.sidebar-image {
+    max-width: 100%; /* Limit the image's width to 100% of its container */
+    height: auto; /* Maintain the image's aspect ratio */
+    display: block; /* Remove any extra spacing around the image */
+    margin: 0 auto; /* Center the image horizontally if the sidebar's width is fixed */
 }
 
 .sidebar-content {
@@ -200,4 +208,15 @@ html, body {
     display: block;  /* Make the image a block-level element */
     margin: 0;       /* Remove margin */
     padding: 0;      /* Remove padding */
+}
+
+.WSU-style, li {
+    font-size: 18px;
+    font-family: WSU_Font;
+}
+
+@font-face {
+    font-family: 'WSU_Font'; /* Choose a name for your font */
+    src: url('/static/fonts/myfont.woff') format('woff');
+    /* You can provide additional file formats for browser compatibility (e.g., woff2, ttf) */
 }
