@@ -2,14 +2,27 @@
 
 {% block content %}
     <h1>Login</h1>
-    <form method ="post">
+
+    <form method="post">
         {% csrf_token %}
+
         {{ form.username.label_tag }}
         {{ form.username }}
+        {{ form.username.errors }}
         <br>
+
         {{ form.password.label_tag }}
         {{ form.password }}
+        {{ form.password.errors }}
         <br>
-        <input type = "submit" value = "Login">
+
+        <input type="submit" value="Login">
     </form>
+
+    <br>
+
+    <p>Don't have an account? <a href="{% url 'register' %}">Register</a></p>
+
+
+
 {% endblock %}

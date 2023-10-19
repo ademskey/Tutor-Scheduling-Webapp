@@ -1,48 +1,66 @@
 from django.shortcuts import render, HttpResponse, redirect
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-from django.contrib.auth.views import LoginView
 from django.contrib.auth import login, authenticate
+from .forms import CustomUserCreationForm
 # Create your views here.
 
 def home(request):
-    return render(request, "register.html")
+    if request.user.is_authenticated:
+        # Redirect logged-in users to their respective pages
+        if request.user.is_admin:
+            return redirect(admin_view)
+        elif request.user.is_student:
+            return redirect(student_view)
+        elif request.user.is_tutor:
+            return redirect(tutor_view)
 
+    # Handle the login POST request
+    if request.method == "POST":
+        form = AuthenticationForm(data=request.POST)
+        if form.is_valid():
+            user = form.get_user()
+            login(request, user)
+            
+            if user.is_admin:
+                return redirect(admin_view)
+            elif user.is_student:
+                return redirect(student_view)
+            elif user.is_tutor:
+                return redirect(tutor_view)
+            else:
+                return redirect('home')
+    else:
+        form = AuthenticationForm()
+
+    # For non-logged-in users, show the login page with the form
+    return render(request, "login.html", {'form': form})
+
+
+
+
+def student_view(request):
+    return render(request, 'studentPage.html')
+def admin_view(request):
+    return render(request, 'adminPage.html')
+def tutor_view(request):
+    return render(request, 'tutorPage.html')
+
+
+
+    
 
 def register(request):
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = CustomUserCreationForm(request.POST)
         if form.is_valid():
             user = form.save()
-            user.is_student = True
-            return redirect('login')
+            
+            # Log the user in.
+            login(request, user)
+            
+            return redirect(student_view)  # Use the name of the URL pattern
     else:
-        form = UserCreationForm()
+        form = CustomUserCreationForm()
 
-    context = {'form': form}
-    return render(request, "register.html", context)
-
-# Login View
-def custom_login(request):
-    if request.method == 'POST':
-        form = AuthenticationForm(data=request.POST)
-        if form.is_valid():
-            username = form.cleaned_data.get('username')
-            password = form.cleaned_data.get('password')
-            user = authenticate(username=username, password=password)
-
-            if user:
-                login(request, user)
-                if user.is_admin:
-                    return redirect('admin_dashboard')
-                elif user.is_student:
-                    return redirect('student_dashboard')
-                elif user.is_tutor:
-                    return redirect('tutor_dashboard')
-                else:
-                    return redirect('dashboard')  # Redirect to a default dashboard or another appropriate URL
-
-    # Handle the case when login fails or for GET requests
-    form = AuthenticationForm()
-    context = {'form': form}
-    return render(request, "login.html", context)
+    return render(request, 'register.html', {'form': form})
 
