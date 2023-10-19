@@ -5,24 +5,31 @@
     <form method="post">
         {% csrf_token %}
 
-        <div>
-            <label for="email">Email:</label><br>
-            <input type="email" id="email" name="email" required>
-        </div>
-        <br>
-        
-        <div>
-            <label for="password1">Password:</label><br>
-            <input type="password" id="password1" name="password1" required>
-        </div>
-        <br>
+        {{ form.username.label_tag }}  <!-- Display the label for the username field -->
+        {{ form.username }}  <!-- Display the username input field -->
+        {{ form.username.errors }}  <!-- Display validation errors, if any -->
 
-        <div>
-            <label for="password2">Confirm Password:</label><br>
-            <input type="password" id="password2" name="password2" required>
-        </div>
-        <br>
-        
-        <button type="submit">Register</button>
+        {{ form.first_name.label_tag }}
+        {{ form.first_name }}
+        {{ form.first_name.errors }}
+      
+        {{ form.last_name.label_tag }}
+        {{ form.last_name }}
+        {{ form.last_name.errors }}
+      
+        {{ form.email.label_tag }}
+        {{ form.email }}
+        {{ form.email.errors }}
+      
+        {{ form.password.label_tag }}
+        {{ form.password }}
+        {{ form.password.errors }}
+
+        {{ form.password2.label_tag }}
+        {{ form.password2 }}
+        {{ form.password2.errors }}
+
+        <input type="submit" value="Register">
+
     </form>
 {% endblock %}
