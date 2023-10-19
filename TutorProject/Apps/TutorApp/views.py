@@ -1,7 +1,7 @@
 from django.shortcuts import render, HttpResponse, redirect
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login, authenticate
-from .forms import CustomUserCreationForm
+from .forms import *
 # Create your views here.
 
 def home(request):
@@ -64,3 +64,14 @@ def register(request):
 
     return render(request, 'register.html', {'form': form})
 
+def adminpage(request):
+    return render(request, 'adminPage.html')
+
+def createuser(request):
+    if request.user.is_admin:
+        form = AdminCreateUser()
+        return render(request, 'createuser.html', {'form': form})
+
+
+    else:
+        return redirect(home) 
