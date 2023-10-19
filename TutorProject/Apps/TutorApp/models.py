@@ -50,6 +50,8 @@ class Admin(models.Model):
     pass
 class Tutor(models.Model):
     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE, null=True)
+    minutes_tutored = models.IntegerField(default=0)
+    day_started = models.DateField(max_length=20, null=True)
     pass
     
 class Student(models.Model):
