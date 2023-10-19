@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from .models import CustomUser
+from .models import CustomUser, Major, Course
 
 
 
@@ -16,3 +16,15 @@ class AdminCreateUser(UserCreationForm):
     class Meta:
         model = CustomUser
         fields = ('first_name', 'last_name', 'email', 'password1', 'password2', 'is_student', 'is_tutor', 'is_admin')
+
+class MajorAndCourseForm(forms.Form):
+    major = forms.ModelChoiceField(
+        queryset=Major.objects.all(),
+        empty_label="Select a major"
+    )
+    course = forms.ModelChoiceField(
+        queryset=Course.objects.all(),
+        empty_label="Select a course"
+    )
+
+    

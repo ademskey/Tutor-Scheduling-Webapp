@@ -25,11 +25,16 @@ class CustomUserManager(BaseUserManager):
 
 
 # Create your models here.
+class Major(models.Model):
+    major = models.CharField(max_length=20)
+
+    def __str__(self):
+        return self.major
+
 class Course(models.Model):
     coursenum = models.CharField(max_length=3)
     title = models.CharField(max_length=100)
-    major = models.CharField(max_length=20)
-
+    major = models.ForeignKey(Major, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.title
