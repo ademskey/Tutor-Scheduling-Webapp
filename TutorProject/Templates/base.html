@@ -21,7 +21,7 @@
             </nav>
         </header>
         <article>
-          <h1>Welcome To VCEA Tutor</h1>
+          <h1 class = "WSU-style-big">Welcome To VCEA Tutor</h1>
           {% block content %}{% endblock %}
           
         </article> 
@@ -40,15 +40,14 @@
             </button>
             
             <div class="sidebar">
-                
             <ul>
-                <li><a class = "WSU-styling" href="#">Home</a></li>
-                <li><a class = "WSU-styling" href="#">Schedule</a></li>
-                <li><a class = "WSU-styling" href="#">Profile</a></li>
+                <li><a class = "WSU-style" href="#">Home</a></li>
+                <li><a class = "WSU-style" href="#">Schedule</a></li>
+                <li><a class = "WSU-style" href="#">Profile</a></li>
                 {% if user.is_authenticated %}
-                    <li><a class = "WSU-styling" href="{% url 'logout' %}">Logout</a></li>
+                    <li><a class = "WSU-style" href="{% url 'logout' %}">Logout</a></li>
                 {% else %}
-                    <li><a class = "WSU-styling" href="{% url 'login' %}">Login</a></li>
+                    <li><a class = "WSU-style" href="{% url 'login' %}">Login</a></li>
                 {% endif %}
             </ul>
         </div>

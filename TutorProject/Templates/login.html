@@ -1,19 +1,22 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>Login</h1>
+    <h1 class = "WSU-style-clear">Login</h1>
 
     <form method="post">
         {% csrf_token %}
 
-        {{ form.username.label_tag }}
-        {{ form.username }}
-        {{ form.username.errors }}
+        <div class = "WSU-style-clear">
+            {{ form.username.label_tag }}
+            {{ form.username }}
+            {{ form.username.errors }}
+        </div>
         <br>
-
-        {{ form.password.label_tag }}
-        {{ form.password }}
-        {{ form.password.errors }}
+        <div class = "WSU-style-clear">
+            {{ form.password.label_tag }}
+            {{ form.password }}
+            {{ form.password.errors }}
+        </div>
         <br>
 
         <input type="submit" value="Login">
