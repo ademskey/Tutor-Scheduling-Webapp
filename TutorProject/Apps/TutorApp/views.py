@@ -24,13 +24,34 @@ def admin_view_deleteuser(request):
 
 # write your methods below here
 def home(request):
+
     if request.user.is_authenticated:
         if request.user.is_admin:
             return redirect('admin_view')  # Use the name of the URL pattern
         elif request.user.is_student:
             return redirect('student_view')  # Use the name of the URL pattern
         elif request.user.is_tutor:
+<<<<<<< Updated upstream
             return redirect('tutor_view')  # Use the name of the URL pattern
+=======
+            return redirect(tutor_view)
+
+    # Handle the login POST request
+    if request.method == "POST":
+        form = AuthenticationForm(data=request.POST)
+        if form.is_valid():
+            user = form.get_user()
+            login(request, user)
+            
+            if user.is_admin:
+                return redirect(createuser)
+            elif user.is_student:
+                return redirect(student_view)
+            elif user.is_tutor:
+                return redirect(tutor_view)
+            else:
+                return redirect('home')
+>>>>>>> Stashed changes
     else:
         form = AuthenticationForm(data=request.POST or None)  # Handle the POST data
         if request.method == "POST":
