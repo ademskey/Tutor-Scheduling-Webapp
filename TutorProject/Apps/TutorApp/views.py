@@ -5,6 +5,7 @@ from .forms import *
 from django.urls import reverse_lazy
 from django.contrib import messages
 from django.core.exceptions import ObjectDoesNotExist
+from .models import *
 
 # Create your views here.
 def student_view(request):
@@ -75,11 +76,17 @@ def admin_create_user(request):
             role = form.cleaned_data.get('role')
             if role == 'is_student':
                 user.is_student = True
+                user.save()
+                Student.objects.create(user=user)
             elif role == 'is_tutor':
                 user.is_tutor = True
+                user.save()
+                Tutor.objects.create(user=user)
             elif role == 'is_admin':
                 user.is_admin = True
-            user.save()
+                user.save()
+                Admin.objects.create(user=user)
+            
             return redirect('admin_view')
     else:
         form = AdminCreateUser()

@@ -7,6 +7,9 @@ from django.dispatch import receiver
 
 
 
+# Create your models here.
+
+
 class CustomUserManager(BaseUserManager):
     def create_user(self, email, password=None, **extra_fields):
         if not email:
@@ -24,16 +27,6 @@ class CustomUserManager(BaseUserManager):
         return self.create_user(email, password, **extra_fields)
 
 
-
-# Create your models here.
-class Course(models.Model):
-    coursenum = models.CharField(max_length=3)
-    title = models.CharField(max_length=100)
-    major = models.CharField(max_length=20)
-
-
-    def __str__(self):
-        return self.title
 
 
 class CustomUser(AbstractUser):
@@ -85,3 +78,35 @@ def manage_user_profile(sender, instance, created, **kwargs):
         Tutor.objects.get_or_create(user=instance)
         Student.objects.filter(user=instance).delete()
         Admin.objects.filter(user=instance).delete()
+
+
+
+class Course(models.Model):
+    coursenum = models.CharField(max_length=3)
+    title = models.CharField(max_length=100)
+    major = models.CharField(max_length=20)
+
+
+    def __str__(self):
+        return self.title
+
+class TutoringSession(models.Model):
+    tutor = models.ForeignKey(Tutor, on_delete=models.CASCADE)
+    subject = models.ForeignKey(Course, on_delete=models.SET_NULL, blank=True, null=True)  # Linking to the Course model
+    description = models.TextField(blank=True, null=True)
+    date = models.DateField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Session on {self.date} by {self.tutor.user.email} on {self.subject.title if self.subject else 'Unknown subject'}"
+    
+class Rating(models.Model):
+    student = models.ForeignKey(Student, on_delete=models.CASCADE)
+    tutor = models.ForeignKey(Tutor, on_delete=models.CASCADE)
+    rating = models.PositiveIntegerField(choices=[(i, str(i)) for i in range(1, 6)])  # Ratings from 1 to 5
+    comments = models.TextField(blank=True, null=True)
+
+    class Meta:
+        unique_together = ('student', 'tutor')  # Ensures a student can only rate a tutor once
+
+    def __str__(self):
+        return f"Rating of {self.rating}/5 by {self.student.user.email} to {self.tutor.user.email}"
