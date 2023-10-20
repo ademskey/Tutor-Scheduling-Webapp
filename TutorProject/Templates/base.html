@@ -12,6 +12,10 @@
             <div class="logo">
                 <img src="{% static 'img/wsu.png' %}">
             </div>
+
+            <div class="logo">
+                <img src="{% static 'img/title.png' %}">
+            </div>
           
             <nav class="header-nav">
                 <a href="https://foundation.wsu.edu">GIVE</a>
@@ -38,7 +42,7 @@
             <div class="sidebar-content">
                 
             <ul>
-                <li><a href="#">Home</a></li>
+                <li><a href="{% url 'home' %}">Home</a></li>
                 <li><a href="#">Schedule</a></li>
                 <li><a href="#">Profile</a></li>
                 {% if user.is_authenticated %}

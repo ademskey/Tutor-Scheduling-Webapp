@@ -4,7 +4,7 @@ from django.contrib.auth import login, authenticate
 from .forms import *
 from django.urls import reverse_lazy
 from django.contrib import messages
-
+from django.core.exceptions import ObjectDoesNotExist
 
 # Create your views here.
 def student_view(request):
@@ -15,7 +15,8 @@ def admin_view(request):
     return render(request, 'adminPage.html')
 def admin_view_createuser(request):
     return render(request, 'createuser.html')
-
+def admin_view_deleteuser(request):
+    return render(request, 'deleteUser.html')
 
 
 
@@ -84,5 +85,48 @@ def admin_create_user(request):
         form = AdminCreateUser()
 
     return render(request, 'createuser.html', {'form': form})
+
+
+
+
+def admin_view_deleteuser(request):
+    # Ensure the user is an admin
+    if not request.user.is_admin:
+        messages.error(request, 'You do not have permission to view this page.')
+        return redirect('home')
+
+    # Initialize users 
+    users = CustomUser.objects.filter(is_admin=False)
+
+    # If the request method is POST, it means we are trying to delete a user
+    if request.method == 'POST':
+        user_id = request.POST.get('user_id')  # Assuming the user ID is passed in the POST data
+        try:
+            user_to_delete = CustomUser.objects.get(pk=user_id)
+            if user_to_delete.is_admin:
+                messages.error(request, 'Cannot delete another admin.')
+            else:
+                user_to_delete.delete()
+                messages.success(request, 'User deleted successfully.')
+        except ObjectDoesNotExist:
+            messages.error(request, 'User not found.')
+
+    # Filtering based on role
+    role = request.GET.get('role', '')
+    if role == 'student':
+        users = users.filter(is_student=True)
+    elif role == 'tutor':
+        users = users.filter(is_tutor=True)
+
+    # Search functionality
+    search_query = request.GET.get('search', '')
+    if search_query:
+        users = users.filter(email__icontains=search_query)
+
+    return render(request, 'deleteUser.html', {'users': users})
+
+    
+
+
 
 

@@ -10,8 +10,7 @@ urlpatterns = [
     path('logout/', LogoutView.as_view(next_page='login'), name='logout'),
     path('student/', views.student_view, name='student_view'),
     path('tutor/', views.tutor_view, name='tutor_view'),
-    path('administrator/', views.admin_view, name = 'admin_view' ),
-    path('administrator/createuser', views.admin_create_user, name = 'admin_view_createuser'),
-    
+    path('administrator/', views.admin_view, name='admin_view'),
+    path('administrator/createuser', views.admin_create_user, name='admin_view_createuser'),
+    path('administrator/deleteuser/', views.admin_view_deleteuser, name='admin_view_deleteuser'),
 ]
- 

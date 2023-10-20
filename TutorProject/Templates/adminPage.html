@@ -1,9 +1,11 @@
-{% extends "base.html" %} {% block title %} admin Page {% endblock %}
+{% extends "base.html" %}
+{% block title %} admin Page {% endblock %}
 
 {% block content %}
 <h2>this is admin page</h2>
 
-
 <a href="{% url 'admin_view_createuser' %}">Create New User</a>
+<br> <!-- Add a line break for separation -->
+<a href="{% url 'admin_view_deleteuser' %}">Delete User</a>
 
 {% endblock %}

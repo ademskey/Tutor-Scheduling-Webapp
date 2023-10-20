@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Delete Users</h2>
+
+<!-- Add some inline styles for spacing -->
+<style>
+    .spacing {
+        margin-bottom: 20px;  /* Adjust as needed */
+    }
+</style>
+
+<div class="messages">
+    {% for message in messages %}
+    <div{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</div>
+    {% endfor %}
+</div>
+
+<!-- Filtering Form -->
+<form method="get" class="spacing">
+    <label for="role">Filter by Role:</label>
+    <select id="role" name="role">
+        <option value="">Show All</option>
+        <option value="student" {% if request.GET.role == "student" %}selected{% endif %}>Student</option>
+        <option value="tutor" {% if request.GET.role == "tutor" %}selected{% endif %}>Tutor</option>
+    </select>
+    <input type="submit" value="Filter">
+</form>
+
+<!-- Search Form -->
+<form method="get" class="spacing">
+    <input type="text" name="search" placeholder="Search by email" value="{{ request.GET.search }}">
+    <input type="submit" value="Search">
+</form>
+
+<!-- prompting the user  -->
+<ul>
+    {% for user in users %}
+    <li>
+        {{ user.email }} - 
+        <a href="{% url 'admin_view_deleteuser' %}" 
+            onclick="event.preventDefault(); 
+            if(confirm('Are you sure you want to delete {{ user.email }}?')) {
+                document.getElementById('delete-form-{{ user.id }}').submit();
+            }">Delete</a>
+        <form id="delete-form-{{ user.id }}" 
+              action="{% url 'admin_view_deleteuser' %}" method="post" style="display: none;">
+            {% csrf_token %}
+            <input type="hidden" name="user_id" value="{{ user.id }}">
+        </form>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

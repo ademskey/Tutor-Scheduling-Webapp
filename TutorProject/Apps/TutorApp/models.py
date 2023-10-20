@@ -41,6 +41,8 @@ class CustomUser(AbstractUser):
     email = models.EmailField(("email address"), unique = True)
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []
+    first_name = models.CharField(max_length=30, blank=False)  
+    last_name = models.CharField(max_length=30, blank=False)  
     is_admin = models.BooleanField(default=False)
     is_student = models.BooleanField(default=True)
     is_tutor = models.BooleanField(default=False)
@@ -57,7 +59,7 @@ class Tutor(models.Model):
 class Student(models.Model):
     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE, null=True)
     
-
+#connect the relationship to the student, tutor, and admin
 @receiver(post_save, sender=CustomUser)
 def manage_user_profile(sender, instance, created, **kwargs):
     # Handle new user creation
