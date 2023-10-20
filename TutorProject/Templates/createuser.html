@@ -1,39 +1,10 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h2>Create User</h2>
-
-    <form method="post">
-        {% csrf_token %}
-
-        {{ form.first_name.label_tag }}
-        {{ form.first_name }}
-        {{ form.first_name.errors }}
-        <br>
-
-        {{ form.last_name.label_tag }}
-        {{ form.last_name }}
-        {{ form.last_name.errors }}
-
-        <br>
-        {{ form.email.label_tag }}
-        {{ form.email }}
-        {{ form.email.errors }}
-        <br>
-
-        {{ form.password1.label_tag }}
-        {{ form.password1 }}
-        {{ form.password1.errors }}
-        <br>
-
-        {{ form.password2.label_tag }}
-        {{ form.password2 }}
-        {{ form.password2.errors }}
-        <br>
-
-        <input type="submit" value="Create User">
-    </form>
-
-
-
+<h2>Create User</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" style="margin-top: 60px;">Create User</button>
+</form>
 {% endblock %}

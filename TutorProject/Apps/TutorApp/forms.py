@@ -12,7 +12,13 @@ class CustomUserCreationForm(UserCreationForm):
 
 
 class AdminCreateUser(UserCreationForm):
+    ROLE_CHOICES = [
+        ('is_student', 'Student'),
+        ('is_tutor', 'Tutor'),
+        ('is_admin', 'Admin'),
+    ]
+    role = forms.ChoiceField(choices=ROLE_CHOICES, required=True)
 
     class Meta:
         model = CustomUser
-        fields = ('first_name', 'last_name', 'email', 'password1', 'password2', 'is_student', 'is_tutor', 'is_admin')
+        fields = ('first_name', 'last_name', 'email', 'password1', 'password2', 'role')

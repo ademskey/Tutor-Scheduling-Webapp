@@ -2,14 +2,22 @@
 
 {% block content %}
     <h2>Login</h2>
-
+    
     <style>
         .submit-button {
             margin-top: 20px; /* Adjust the value to your preference */
         }
     </style>
+    
+    {% if messages %}
+    <div class="messages">
+        {% for message in messages %}
+        <div{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</div>
+        {% endfor %}
+    </div>
+    {% endif %}
+    <form method="post" action="{% url 'home' %}">
 
-    <form method="post">
         {% csrf_token %}
 
         <div>
