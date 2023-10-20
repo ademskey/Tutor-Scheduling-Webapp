@@ -54,7 +54,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'TutorProject.urls'
 
-
+LOGIN_REDIRECT_URL = 'home'
 AUTH_USER_MODEL = 'TutorApp.CustomUser'
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
