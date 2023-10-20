@@ -21,17 +21,13 @@
             </nav>
         </header>
         <article>
-          <h1 class = "WSU-style-big">Welcome To VCEA Tutor</h1>
+          <h1>Welcome To VCEA Tutor</h1>
           {% block content %}{% endblock %}
           
         </article> 
         <aside id="sidebar">
-
-            <div>
-                <img src="{% static 'img/title.png' %}" class = "sidebar-image">
-            </div>
-
             <button id="closeSidebarBtn">
+               
                 <img src="{% static 'img/closeButton.svg' %}" alt="Close Sidebar" width="20" height="20">
             </button>
              <!-- Menu button (Initially hidden) -->
@@ -39,16 +35,18 @@
                 <img src="{% static 'img/menu.svg' %}" alt="Open Sidebar" width="20" height="20">
             </button>
             
-            <div class="sidebar">
+            <div class="sidebar-content">
+                
             <ul>
-                <li><a class = "WSU-style" href="#">Home</a></li>
-                <li><a class = "WSU-style" href="#">Schedule</a></li>
-                <li><a class = "WSU-style" href="#">Profile</a></li>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Schedule</a></li>
+                <li><a href="#">Profile</a></li>
                 {% if user.is_authenticated %}
-                    <li><a class = "WSU-style" href="{% url 'logout' %}">Logout</a></li>
+                    <li><a href="{% url 'logout' %}">Logout</a></li>
                 {% else %}
-                    <li><a class = "WSU-style" href="{% url 'login' %}">Login</a></li>
+                    <li><a href="{% url 'login' %}">Login</a></li>
                 {% endif %}
+
             </ul>
         </div>
         </aside>
