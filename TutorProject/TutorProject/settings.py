@@ -91,6 +91,11 @@ DATABASES = {
         'HOST': 'termproject.mysql.database.azure.com',
         'PORT': '3306'
         
+    },
+    # sqlite database for testing only
+    'test': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': ':memory:',
     }
 }
 
