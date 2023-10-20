@@ -1,28 +1,38 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>Login</h1>
+    <h2>Login</h2>
+
+    <style>
+        .submit-button {
+            margin-top: 20px; /* Adjust the value to your preference */
+        }
+    </style>
 
     <form method="post">
         {% csrf_token %}
 
-        {{ form.username.label_tag }}
-        {{ form.username }}
-        {{ form.username.errors }}
-        <br>
+        <div>
+            {{ form.username.label_tag }}
+        </div>
+        <div>
+            {{ form.username }}
+            {{ form.username.errors }}
+        </div>
 
-        {{ form.password.label_tag }}
-        {{ form.password }}
-        {{ form.password.errors }}
-        <br>
+        <div>
+            {{ form.password.label_tag }}
+        </div>
+        <div>
+            {{ form.password }}
+            {{ form.password.errors }}
+        </div>
 
-        <input type="submit" value="Login">
+        <input type="submit" value="Login" class="submit-button">
     </form>
 
     <br>
 
     <p>Don't have an account? <a href="{% url 'register' %}">Register</a></p>
-
-
 
 {% endblock %}

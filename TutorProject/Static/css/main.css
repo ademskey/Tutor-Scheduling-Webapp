@@ -1,5 +1,5 @@
 :root {
-    --headerColor: #4D4D4D;
+    --headerColor: #23282b;
     --crimson: #A60F2D;
 }
 
@@ -159,6 +159,7 @@ aside a:hover {
 
 #sidebar.closed #openSidebarBtn{
     display: block;
+    
 }
 
 /* Positioning the menu button */
@@ -201,3 +202,15 @@ html, body {
     margin: 0;       /* Remove margin */
     padding: 0;      /* Remove padding */
 }
+
+article h1 {
+    background-color: var(--crimson); /* Using the crimson color you've defined */
+    color: white; /* Making the text color white for better contrast */
+    padding: 15px 0; /* Larger vertical padding, no horizontal padding */
+    margin: 0; /* Removing all margins to ensure it spans the full width */
+    display: block; /* Ensuring the background color spans the full width */
+    text-align: center; /* Centering the text within the bar */
+    width: 100%; /* Ensure the element takes the full width */
+    box-sizing: border-box; /* This ensures padding doesn't add to the width */
+}
+
