@@ -31,27 +31,7 @@ def home(request):
         elif request.user.is_student:
             return redirect('student_view')  # Use the name of the URL pattern
         elif request.user.is_tutor:
-<<<<<<< Updated upstream
             return redirect('tutor_view')  # Use the name of the URL pattern
-=======
-            return redirect(tutor_view)
-
-    # Handle the login POST request
-    if request.method == "POST":
-        form = AuthenticationForm(data=request.POST)
-        if form.is_valid():
-            user = form.get_user()
-            login(request, user)
-            
-            if user.is_admin:
-                return redirect(createuser)
-            elif user.is_student:
-                return redirect(student_view)
-            elif user.is_tutor:
-                return redirect(tutor_view)
-            else:
-                return redirect('home')
->>>>>>> Stashed changes
     else:
         form = AuthenticationForm(data=request.POST or None)  # Handle the POST data
         if request.method == "POST":
@@ -67,7 +47,7 @@ def home(request):
             else:
                 messages.error(request, 'Invalid email or password.')
 
-    return render(request, "login.html", {'form': form})
+        return render(request, "login.html", {'form': form})
 
 def register(request):
     if request.method == 'POST':
