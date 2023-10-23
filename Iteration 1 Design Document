@@ -1,0 +1,284 @@
+# Design Document
+
+
+## VCEA TutorProject
+--------
+Prepared by: Team Tylenol
+
+
+* `Jack Balster`,`WSU Team Tylenol`
+* `Trenton Bergdahl`,`WSU Team Tylenol`
+* `Cameron Caen`,`WSU Team Tylenol`
+* `Adam Caudle`,`WSU Team Tylenol`
+* `Matthew Pham`,`WSU Team Tylenol`
+---
+
+
+**Course** : CptS 322 - Software Engineering Principles I
+
+
+**Instructor**: Sakire Arslan Ay
+
+
+---
+
+
+## Table of Contents
+- [Design Document](#design-document)
+  - [Your Project Title](#your-project-title)
+  - [Table of Contents](#table-of-contents)
+    - [Document Revision History](#document-revision-history)
+- [1. Introduction](#1-introduction)
+- [2. Architectural and Component-level Design](#2architectural-and-component-level-design)
+  - [2.1 System Structure](#21-system-structure)
+  - [2.2 Subsystem Design](#22-subsystem-design)
+    - [2.2.1 Model](#221-model)
+    - [2.2.2 Controller](#222-controller)
+    - [2.2.3 View and User Interface Design](#223-view-and-user-interface-design)
+- [3. Progress Report](#3-progress-report)
+- [4. Testing Plan](#4-testing-plan)
+- [5. References](#5-references)
+- [Appendix: Grading Rubric](#appendix-grading-rubric)
+
+
+<a name="revision-history"> </a>
+
+
+### Document Revision History
+
+
+| Name | Date | Changes | Version |
+| ------ | ------ | --------- | --------- |
+|Revision 1 |2023-10-022 |Initial draft | 1.0        |
+|      |      |         |         |
+|      |      |         |         |
+
+
+
+
+# 1. Introduction
+
+
+The purpose of making this design document is to record and document revisions, history, and design architecture of our VCEA tutor app. This is the first revision of this document.
+
+
+The VCEA Tutor App is a web app designed using the DJANGO web framework with the goal of allowing students, tutors, and administrators to be able to efficiently and effectively schedule tutoring appointments and coordinate with students to help them receive the extra instruction that they need.
+
+
+This document will cover the architecture, design, and the revision history of not only the app but also this document.
+
+
+[Section II](#2-architectural-and-component-level-design) includes …
+
+
+[Section III](#22-subsystem-design) includes …
+
+
+# 2.  Architectural and Component-level Design
+## 2.1 System Structure
+
+
+The High-level architecture view of our app can be broken down similarly to the Model View Controller architecture (MVC) but because we are using django it is more apt to be called an App-view or DJANGO structure. While it follows similar design principles to MVC, the models and routes are separated from the view inside of the tutor project django apps. These elements are then separated and organized accordingly inside of the app.
+
+![HomePage](Mockups/subsystem_v1.png?raw=true)
+
+
+ * 
+ * Tutorapp controls the delegation into the View (Forms + Templates) , the Views/Routes) and the model section which controls the models and Database Management.
+ * The reason for this design is to eloquently and well separate the subsystems into their individual responsibilities for the software.
+
+
+## 2.2 Subsystem Design
+As we are using Django, the architectural design pattern we are using is the Django app structure. The key difference is that the MVT pattern separates the presentation layer more distinctly. Our Django app structure separates the students, tutors, and admins into their own apps. The calendar is then handled separately by another Django app. This separates the code and systems of the different major users and systems.
+
+
+### 2.2.1 Apps -> Models
+
+
+The Apps control the models which interact/create the database. Each app (for students, tutors, and admins) control the respective DB interactions and thus control the model for the system.
+
+
+CustomUserManager - Model that represents all users of the app.
+Attributes:
+- email
+- first_name
+- last_name
+- is_admin
+- is_tutor
+- is_student
+- objects
+
+
+CustomUser
+- email
+- first_name
+- last_name
+- is_admin
+- is_tutor
+- is_student
+- objects
+
+
+Admin
+- user *One to One relationship with CustomUser
+
+
+Tutor 
+-user *One to One relationship with CustomUser
+-minutes tutored
+-Days started
+
+
+Student
+- user *One to One relationship with CustomUser
+
+
+Course
+-coursenum
+-title
+-major
+
+
+### 2.2.2 Apps -> Views
+
+
+The role of our apps and their view.py is to control the routes for url and template rendering. They act similar to the routes.py of flask, but each app within the django project has its own view.py which controls the routes. Each of the subsystems within this subsystem will be a django app. These systems are the tutor app, student app, admin app, and a scheduling Django app to handle the scheduling.
+
+
+Tutor app:
+The tutor app is responsible for handling views/routes relating to the tutor as a user class. All separate links and url/templates are directed to via the tutor app. Interacts with all other subsystems (student, admin, schedule. The Tutorapp depends on the scheduling app for scheduling appointments, the student app for associating with a tutoring appointment, and the admin app for tutor creation.
+
+
+Student app:
+The student app is responsible for handling views/routes relating to the student as a user class. All separate links and url/templates are directed to via the student app. Interacts with all other subsystems (tutor, admin, schedule). The student app depends on the tutor app for scheduling appointments. Students can be created without admin permission.
+def register(request) Issues Post Request, Can accept get requests
+def home(request) Accepts Post Requests
+
+
+Admin app:
+The Admin app is responsible for handling views/routes relating to the Admin as a user class. All separate links and url/templates are directed to via the Admin app. Interacts with all other subsystems (student, tutor, schedule. Does not depend on any other system, but has dependencies through creation and management of all other users I.E. Tutors and students.
+def admin_view_deleteuser(request) Can issue Get and Post Requests
+def admin_create_user(request) Can issue Post requests
+
+
+Schedule app:
+The Schedule app will (in further implementations) handle all of the calendar, scheduling implementations and the routes, urls/templates relating to the schedule for all users. Interacts with all other subsystems (student, admin, tutor). The schedule app depends on cohesion with the tutor and student systems for correct saving of scheduling data. The schedule app depends on tutors and students for correct data regarding appointments.
+
+
+List of all current paths/routes:
+path("", views.home, name="home"),
+path("register/", views.register, name="register"),
+path('login/', LoginView.as_view(template_name='login.html'), name='login'),
+path('logout/', LogoutView.as_view(next_page='login'), name='logout'),
+path('student/', views.student_view, name='student_view'),
+path('tutor/', views.tutor_view, name='tutor_view'),
+path('administrator/', views.admin_view, name='admin_view'),
+path('administrator/createuser', views.admin_create_user, name='admin_view_createuser'),
+path('administrator/deleteuser/', views.admin_view_deleteuser, name='admin_view_deleteuser'),
+
+
+|   | Methods           | URL Path   | Description  |
+|:--|:------------------|:-----------|:-------------|
+|1. |Get                |""           |Basic Home Page|
+|2. |”Get” “Post”       |"register/"   |Registration Page              
+|3. |“Post”             |'login/'      |Logout user              
+|4. |“Post”             |'logout/'     |Log out current user              
+|5. |”Get” “Post”       |'student/'    |Student homepage              
+|6. |”Get” “Post”       |'tutor/'      |Tutor homepage              
+|7. |”Get”              |'administrator/’|Administrator Homepage              
+|8. |”Get” “Post”       |'administrator/createuser'|Createuser page for admin              
+|9. |”Get” “Post”       |'administrator/deleteuser/'|Delete User page for admin                         
+
+
+
+### 2.2.3 View and User Interface Design
+
+
+The role of our view is to properly display the directed information to the students, users, and admins using our tutor app. We plan to build the UI using WSU styling and separate based on the login roll. Currently we are doing everything in html and Django, but in the future we are looking at potentially using bootstrap or some other view framework).  
+
+
+Current Templates
+-adminPage.html  -Admin home page for viewing admin options
+-base.html  -Base for housing sidebar and top banner/footer
+-createuser.html  -page for admin to create a user
+-deleteuser.html  -page for admin to delete a user
+-home.html  -home page for student user
+-login.html  -login page for basic login
+-register.html  - page for registering a student
+-studentpage.html  -student home page for viewing admin options
+-tutorpage.html  -page for tutor for viewing tutor options
+
+
+
+
+The view in MVT is responsible for handling the presentation layer of the application. It will receive and process user inputs (typically via URL routing), communicate with the model to fetch/manipulate data, decide which template to use for rendering the final output, and prepare the data to be displayed in the template.
+
+
+- Home Page (Student)
+
+
+	This page will display a default message to the user, as the student actions are all accessible from the side taskbar.
+
+
+- Home Page (Tutor)
+
+
+	This page will display a default message to the user, as the tutor actions are all accessible from the side taskbar.
+
+
+- Home Page (Admin)
+	
+	This page will display the possible options for the admin functions. These options include creating and deleting users. These functions are represented by separate redirects to each form.
+
+
+- Login Page
+	
+	This page will show the user fields for entering their email and password, as well as a submit button to log in. Additionally, it contains a link to register an account if one is not already made for the user, which redirects them to the register form. 
+
+
+- Register Page
+
+
+	This page will show the user the form for creating a new user for the portal. The fields in this form include first name, last name, email address, password, and confirm password. It will also contain a submit form that will take the user to the student home page, as the user can only create student profiles from this form.
+
+
+- Scheduling Page
+
+
+	This page will show the calendar that will be used to schedule appointments. It will display the separate slots in which you can schedule different tutoring sessions, as well as a calendar to contain all of this info. There will also be a submit button that will schedule the appointment and confirm it.
+
+
+
+
+- Tutor Profile Page
+
+
+	This page will display the tutor’s profile picture, name, email, major, description, preferred subjects, and available time slots.
+
+
+- Admin User Creation Page
+
+
+	This page will display a form used to create a new user. The form includes fields for first name, last name, email address, password, password confirmation, and a selection of which user type the new user will be. This also has a submit button to commit these changes to the database.
+
+
+- Admin User Deletion Page
+
+
+	This page will display a form used to delete users from the database. This page contains a selection of multiple roles to filter by, as well as a search function and a list of the users created. Each user has a delete button in order to commit the deletion of the user to the database.
+
+
+
+
+# 3. Progress Report
+
+
+In iteration 1, we implemented a basic framework for our application. We initialized the backend of the app, as well as an overall design for our frontend. We implemented functionality for register, login, and logout, as well as the sidebar for navigation. In the admin user type, you are able to filter users, as well as create and delete users of either student or tutor type. 
+
+
+# 5. References
+Homepage Voiland College of engineering and Architecture. (2023, October 9) https://vcea.wsu.edu
+
+
+
+
